@@ -43,12 +43,12 @@ This project uses entropy derived from quantum experiments, making each output f
 
 ## Running locally
 
-### Backend
 ```bash
 cd server
 npm install
 node server.js
 
-### FrontEnd
-```bash
+
+cd client
+npm install
 npm run dev
