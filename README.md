@@ -31,7 +31,7 @@ This project uses entropy derived from quantum experiments, making each output f
 
 ## How it works (high level)
 
-1. Backend calls CURBy endpoint: "https://random.colorado.edu/api/curbyq/round/latest/result"
+1. Backend calls CURBy endpoint: "https://random.colorado.edu/api/chains/xxx/pulses/latest"
 
 2. Extracts entropy from CID-based fields in the response
 
