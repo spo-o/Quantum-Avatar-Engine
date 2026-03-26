@@ -34,8 +34,7 @@ function App() {
 
       const data = await res.json();
 
-      const nums = data.data;
-      return nums;
+      return data;
 
 
     } catch (err) {
@@ -45,12 +44,14 @@ function App() {
   };
 
   const generateAvatar = async () => {
-    const ent = await getQuantumEntropy();
+    const data = await getQuantumEntropy();
 
-    if (!ent || ent.length < 10) {
-      console.error("Bad entropy");
-      return;
-    }
+if (!data || !data.entropy || data.entropy.length < 10) {
+  console.error("Bad entropy");
+  return;
+}
+
+const ent = data.entropy;
 
     const timeSeed = Date.now() % 1000;
 
@@ -64,6 +65,8 @@ function App() {
       face: faceShapes[(ent[3] + timeSeed) % faceShapes.length],
       expression: expressions[(ent[5] + timeSeed) % expressions.length],
       dna: ent.slice(0, 5).map((n) => n.toString(16)).join("-"),
+      source: data.source,
+      timestamp: data.timestamp
     };
 
     setEntropy(ent);
@@ -192,6 +195,7 @@ function App() {
             <p><strong>Hair:</strong> {avatar.hair}</p>
             <p><strong>Outfit:</strong> {avatar.outfit}</p>
             <p><strong>QDNA:</strong> {avatar.dna}</p>
+            <p><strong>Timestamp:</strong> {avatar.timestamp}</p>
           </div>
 
           <div className="entropy">
