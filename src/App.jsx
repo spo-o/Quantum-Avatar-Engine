@@ -9,13 +9,11 @@ const accessories = ["none", "glasses"];
 const hairStyles = ["short", "long", "bald"];
 const faceShapes = ["round", "oval", "heart"];
 const expressions = ["happy", "smile", "smirk"];
-const [meta, setMeta] = useState(null);
 
 function App() {
   const [avatar, setAvatar] = useState(null);
   const [entropy, setEntropy] = useState([]);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  
 
   useEffect(() => {
     const handleMove = (e) => {
@@ -54,14 +52,6 @@ if (!data || !data.entropy || data.entropy.length < 10) {
 }
 
 const ent = data.entropy;
-const now = new Date().toISOString();
-
-setMeta({
-  quantum: data.quantumEntropy,
-  time: data.timeEntropy,
-  qdna: data.qdna,
-  currentTime: now
-});
 
     const timeSeed = Date.now() % 1000;
 
@@ -205,26 +195,14 @@ setMeta({
             <p><strong>Hair:</strong> {avatar.hair}</p>
             <p><strong>Outfit:</strong> {avatar.outfit}</p>
             <p><strong>QDNA:</strong> {avatar.dna}</p>
-
-            {meta && (
-              <>
-                <p>
-                  <strong>CURBy Time:</strong>{" "}
-                  {new Date(meta.time).toLocaleString()}
-                </p>
-
-                <p>
-                  <strong>Time Now:</strong>{" "}
-                  {new Date(meta.currentTime).toLocaleString()}
-                </p>
-              </>
-            )}
-          </div> {}
+            <p><strong>Timestamp:</strong> {avatar.timestamp}</p>
+          </div>
 
           <div className="entropy">
             <p>Entropy:</p>
             <small>{entropy.slice(0, 30).join(", ")}...</small>
           </div>
+
         </div>
       )}
     </div>
