@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+/* MAIN LAYOUT */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px; /* more breathing space */
+  padding: 40px;
+}
+
+/* BUTTON */
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+
+  position: relative;
+  z-index: 10;
+}
+
+/* CARD */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* 🔥 fixes stacking */
+  max-width: 350px;
+  width: 100%;
+}
+
+/* AVATAR */
+.avatar {
+  width: 220px;   /* bigger = better proportions */
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* SVG animation (clean single animation) */
+.avatar svg {
+  width: 100%;
+  height: auto;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* FLOAT ANIMATION */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* INFO TEXT */
+.info {
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ENTROPY BLOCK */
+.entropy {
+  font-size: 12px;
+  opacity: 0.7;
+
+  max-width: 320px;
+  text-align: center;
+
+  word-break: break-word;
+  line-height: 1.4;
+}
+h1 {
+  margin-bottom: 10px;
+}
+
+.card {
+  background: rgba(255,255,255,0.03);
+  padding: 20px;
+  border-radius: 16px;
+}
+.eyes {
+  transform-origin: center;
+  animation: blink 4s infinite;
+}
+
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  margin: 20px;
+  border-radius: 10px;
+  border: none;
+  background: #334155;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #475569;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
