@@ -16,20 +16,13 @@ Instead of using pseudo-random functions like `Math.random()`, this application 
   - Expressions
 - Renders a dynamic SVG-based avatar in the browser
 
-Each avatar is influenced by real-world quantum randomness rather than deterministic algorithms.
-
-## Why this is interesting
-
-Most applications rely on pseudo-random generators, which are predictable.  
-This project uses entropy derived from quantum experiments, making each output fundamentally unpredictable.
-
 ## Tech Stack
 
 - React (frontend)
 - Node.js + Express (backend)
 - CURBy Quantum Entropy API
 
-## How it works (high level)
+## How it works
 
 1. Backend calls CURBy endpoint: "https://random.colorado.edu/api/chains/xxx/pulses/latest"
 

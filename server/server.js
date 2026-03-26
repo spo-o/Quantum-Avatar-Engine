@@ -20,7 +20,7 @@ app.get("/entropy", async (req, res) => {
 
     const json = await response.json();
 
-    // ✅ Extract real entropy sources
+    // Extract entropy sources
     const payload = json?.data?.content?.payload;
 
     const pre = payload?.pre?.["/"]?.bytes;
@@ -31,15 +31,19 @@ app.get("/entropy", async (req, res) => {
       throw new Error("Missing entropy fields");
     }
 
-    // ✅ Combine + hash (this is your REAL entropy)
-    const combined = pre + salt + timestamp;
+    
+    const now = Date.now(); // current system time (ms)
+
+    //  Combine + hash (this is my REAL entropy)
+    const combined = `${pre}${salt}${timestamp}${Date.now()}`;
+    
 
     const hash = crypto
       .createHash("sha256")
       .update(combined)
       .digest("hex");
 
-    // ✅ Convert hash → usable numbers (0–15)
+    //  Convert hash → usable numbers (0–15)
     const nums = [];
     for (let i = 0; i < hash.length; i += 2) {
       nums.push(parseInt(hash.slice(i, i + 2), 16) % 16);
