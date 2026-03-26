@@ -28,7 +28,7 @@ function App() {
 
   const getQuantumEntropy = async () => {
     try {
-      const res = await fetch("http://localhost:3001/entropy");
+      const res = await fetch("https://quantum-avatar-engine.onrender.com/entropy");
 
       if (!res.ok) throw new Error("Backend failed");
 
